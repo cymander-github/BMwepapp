@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>지연이의 학습 관리</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>지연이의 학습 관리</h1>
+        
+        <!-- 책 정보 입력 폼 -->
+        <div class="book-form">
+            <h2>책 정보 입력</h2>
+            <form id="bookForm" class="form-row">
+                <div class="form-group">
+                    <label for="bookTitle">책 제목</label>
+                    <input type="text" id="bookTitle" required lang="ko" maxlength="50" size="30">
+                </div>
+                <div class="form-group">
+                    <label for="publisher">출판사</label>
+                    <input type="text" id="publisher" required lang="ko" maxlength="20" size="20">
+                </div>
+                <div class="form-group">
+                    <label for="publishYear">발행년도</label>
+                    <input type="number" id="publishYear" required maxlength="10" size="10">
+                </div>
+                <div class="form-group button-group">
+                    <button type="submit">등록하기</button>
+                </div>
+            </form>
+        </div>
+        
+        <!-- 학습 진도 표 -->
+        <div class="progress-table">
+            <h2>학습 진도 관리</h2>
+            <div class="study-header">
+                <div class="header-cell">학습 목차</div>
+                <div class="header-cell">학습 계획 일자</div>
+                <div class="header-cell">학습 수행 일자</div>
+            </div>
+            <div class="study-container">
+                <div class="study-row">
+                    <input type="text" class="chapter-input" placeholder="새 목차 입력" maxlength="30">
+                    <div class="date-group">
+                        <input type="date" class="date-input">
+                        <span>~</span>
+                        <input type="date" class="date-input">
+                    </div>
+                    <div class="date-group">
+                        <input type="date" class="date-input">
+                        <span>~</span>
+                        <input type="date" class="date-input">
+                    </div>
+                </div>
+            </div>
+            <div class="button-container">
+                <button id="addRow">새로운 목차 추가</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,249 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 폰트 직접 정의 */
+@font-face {
+    font-family: 'NanumHimNae';
+    src: url('./fonts/NanumHimNae.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body, input, button {
+    font-family: 'NanumHimNae', sans-serif;
+}
+
+body {
+    line-height: 1.6;
+    padding: 20px;
+    background-color: #f5f5f5;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h1, h2 {
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5em;
+    color: #333;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    margin: 30px 0;
+    padding-bottom: 15px;
+    position: relative;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #666, transparent);
+}
+
+.book-form {
+    background-color: #e8e8e8;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 25px;
+}
+
+.form-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+    width: 100%;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.form-group:nth-child(1) {
+    flex: 4;
+}
+
+.form-group:nth-child(2) {
+    flex: 2;
+}
+
+.form-group:nth-child(3) {
+    flex: 1;
+    margin-left: -10px;
+}
+
+.form-group label {
+    font-size: 0.95em;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    height: 35px;
+    padding: 6px 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1.1em;
+}
+
+.button-group {
+    flex: 1;
+}
+
+.button-group button {
+    width: 100%;
+    height: 35px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.button-group button:hover {
+    background-color: #45a049;
+}
+
+/* 학습 진도 관리 스타일 수정 */
+.progress-table {
+    margin-top: 30px;
+}
+
+.study-header {
+    display: flex;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.header-cell {
+    flex: 1;
+    padding: 8px;
+}
+
+.header-cell:first-child {
+    flex: 2;
+}
+
+.study-container {
+    margin-bottom: 20px;
+}
+
+.study-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 0 15px;
+}
+
+.chapter-input {
+    flex: 2;
+    height: 35px;
+    padding: 6px 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1.1em;
+}
+
+.date-group {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.date-input {
+    width: 130px;
+    height: 35px;
+    padding: 6px 8px;
+    padding-right: 30px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1.1em;
+    position: relative;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#addRow {
+    width: auto;
+    padding: 8px 20px;
+    margin: 10px 15px;
+}
+
+/* 발행년도 입력 필드의 화살표 제거 */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* 입력 필드 크기 조정 */
+#bookTitle {
+    width: 100%;
+}
+
+#publisher {
+    width: 200px;
+}
+
+#publishYear {
+    width: 100px;
+}
+
+/* 버튼 스타일 유지 */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'NanumHimNae', sans-serif;
+}
+
+/* 날짜 구분자 (~) 스타일 */
+.date-separator {
+    margin: 0 2px;
+}
+
+/* 입력 필드 공통 스타일 */
+input {
+    width: 100%;
+    height: 40px;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1.2em;
+}
+
+/* 달력 아이콘 위치 조정 */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
