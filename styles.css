@@ -26,7 +26,7 @@ section::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('/Users/user/Desktop/cursor_test/Project/BMwepapp/images/leather-texture.jpg');
+    background-image: url('./images/leather-texture.jpg');
     background-size: cover;
     opacity: 0.15;
     pointer-events: none;
@@ -351,7 +351,7 @@ input[type="date"]:focus {
     transform: translateY(-50%);
     width: 100px;
     height: 120px;
-    background-image: url('/Users/user/Desktop/cursor_test/Project/BMwepapp/images/book.png');
+    background-image: url('./images/book.png');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
