@@ -7,59 +7,101 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
+    <!-- 페이지 제목 추가 -->
+    <header class="page-header">
         <h1>지연이의 학습 관리</h1>
-        
-        <!-- 책 정보 입력 폼 -->
-        <div class="book-form">
-            <h2>책 정보 입력</h2>
-            <form id="bookForm" class="form-row">
-                <div class="form-group">
-                    <label for="bookTitle">책 제목</label>
-                    <input type="text" id="bookTitle" required lang="ko" maxlength="50" size="30">
-                </div>
-                <div class="form-group">
-                    <label for="publisher">출판사</label>
-                    <input type="text" id="publisher" required lang="ko" maxlength="20" size="20">
-                </div>
-                <div class="form-group">
-                    <label for="publishYear">발행년도</label>
-                    <input type="number" id="publishYear" required maxlength="10" size="10">
-                </div>
-                <div class="form-group button-group">
-                    <button type="submit">등록하기</button>
-                </div>
-            </form>
+        <div class="header-decoration"></div>
+    </header>
+    
+    <!-- 책 정보 입력 섹션 -->
+    <section id="bookInput">
+        <h2>책 정보 입력</h2>
+        <div class="input-container">
+            <input type="text" id="bookTitle" placeholder="책 제목">
+            <input type="text" id="publisher" placeholder="출판사">
+            <input type="text" id="publishYear" placeholder="출판년도">
+            <button id="addBook" class="add-btn">새로운 책 추가</button>
         </div>
-        
-        <!-- 학습 진도 표 -->
-        <div class="progress-table">
-            <h2>학습 진도 관리</h2>
-            <div class="study-header">
-                <div class="header-cell">학습 목차</div>
-                <div class="header-cell">학습 계획 일자</div>
-                <div class="header-cell">학습 수행 일자</div>
-            </div>
-            <div class="study-container">
-                <div class="study-row">
-                    <input type="text" class="chapter-input" placeholder="새 목차 입력" maxlength="30">
-                    <div class="date-group">
-                        <input type="date" class="date-input">
-                        <span>~</span>
-                        <input type="date" class="date-input">
-                    </div>
-                    <div class="date-group">
-                        <input type="date" class="date-input">
-                        <span>~</span>
-                        <input type="date" class="date-input">
-                    </div>
+    </section>
+
+    <!-- 등록된 책 목록 섹션 -->
+    <section id="bookList">
+        <h2>등록된 책 목록</h2>
+        <div class="sort-container">
+            <select id="sortOption">
+                <option value="title">제목순</option>
+                <option value="publisher">출판사순</option>
+                <option value="publishYear">발행년도순</option>
+                <option value="progress">진도율순</option>
+            </select>
+            <button id="sortDirection" class="sort-btn">▲</button>
+        </div>
+        <div id="bookListContainer" class="book-list"></div>
+    </section>
+
+    <!-- 학습 목차 관리 섹션 -->
+    <section id="chapterManagement" style="display: none;">
+        <h2>학습 목차 관리</h2>
+        <div class="chapter-input-container">
+            <div class="input-row">
+                <div class="input-group">
+                    <label>학습 목차</label>
+                    <input type="text" id="chapterTitle" placeholder="새 목차 입력" class="title-input">
+                    <label class="page-label">Page</label>
+                    <input type="text" id="chapterPage" class="page-input">
                 </div>
             </div>
-            <div class="button-container">
-                <button id="addRow">새로운 목차 추가</button>
+            
+            <div class="input-row dates-row">
+                <div class="input-group date-group">
+                    <label>학습 계획 일자</label>
+                    <div class="date-inputs">
+                        <input type="date" id="plannedStartDate">
+                        <span>~</span>
+                        <input type="date" id="plannedEndDate">
+                    </div>
+                </div>
+                
+                <div class="input-group date-group">
+                    <label>학습 수행 일자</label>
+                    <div class="date-inputs">
+                        <input type="date" id="actualStartDate">
+                        <span>~</span>
+                        <input type="date" id="actualEndDate">
+                    </div>
+                </div>
+                
+                <button id="addChapter" class="add-btn">새로운 목차 추가</button>
             </div>
         </div>
-    </div>
-    <script src="script.js"></script>
+
+        <div class="chapter-management">
+            <h3>학습 목차 관리</h3>
+            <div class="sort-container">
+                <select id="chapterSortOption">
+                    <option value="title">목차순</option>
+                    <option value="plannedStartDate">계획일자순</option>
+                    <option value="actualStartDate">수행일자순</option>
+                    <option value="status">진도상태순</option>
+                </select>
+                <button id="chapterSortDirection" class="sort-btn">▲</button>
+            </div>
+            <table class="chapter-table">
+                <thead>
+                    <tr>
+                        <th>학습 목차</th>
+                        <th>계획 기간</th>
+                        <th>수행 기간</th>
+                        <th>진도 상태</th>
+                        <th>관리</th>
+                    </tr>
+                </thead>
+                <tbody id="chapterListContainer">
+                    <!-- 목차 목록이 여기에 동적으로 추가됨 -->
+                </tbody>
+            </table>
+        </div>
+    </section>
 </body>
+<script src="script.js"></script>
 </html>

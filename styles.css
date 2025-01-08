@@ -1,249 +1,442 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* 폰트 직접 정의 */
-@font-face {
-    font-family: 'NanumHimNae';
-    src: url('./fonts/NanumHimNae.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-body, input, button {
-    font-family: 'NanumHimNae', sans-serif;
-}
-
+/* 전체 레이아�� */
 body {
-    line-height: 1.6;
+    font-family: 'NanumHimNae', sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 20px;
     background-color: #f5f5f5;
+    font-size: 1.2em;
 }
 
-.container {
-    max-width: 1000px;
-    margin: 0 auto;
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-h1, h2 {
-    color: #333;
-}
-
-h1 {
-    text-align: center;
-    font-size: 2.5em;
-    color: #333;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-    margin: 30px 0;
-    padding-bottom: 15px;
+section {
+    background-color: #fff;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border: 1px solid rgba(121,85,72,0.2);
     position: relative;
+    overflow: hidden;
 }
 
-h1::after {
+section::before {
     content: '';
     position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
     bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 200px;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #666, transparent);
+    background-image: url('/Users/user/Desktop/cursor_test/Project/BMwepapp/images/leather-texture.jpg');
+    background-size: cover;
+    opacity: 0.15;
+    pointer-events: none;
 }
 
-.book-form {
-    background-color: #e8e8e8;
-    padding: 15px;
-    border-radius: 4px;
-    margin-bottom: 25px;
+h2, h3 {
+    margin-top: 0;
+    color: #333;
+    font-size: 2em;
+    margin-bottom: 15px;
 }
 
-.form-row {
+/* 입력 컨테이너 스타일 */
+.input-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    align-items: center;
+}
+
+/* 정렬 컨테이너 스타일 */
+.sort-container {
     display: flex;
-    align-items: flex-end;
-    gap: 12px;
-    width: 100%;
+    gap: 10px;
+    margin-bottom: 15px;
 }
 
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.form-group:nth-child(1) {
-    flex: 4;
-}
-
-.form-group:nth-child(2) {
-    flex: 2;
-}
-
-.form-group:nth-child(3) {
-    flex: 1;
-    margin-left: -10px;
-}
-
-.form-group label {
-    font-size: 0.95em;
-    font-weight: bold;
-}
-
-.form-group input {
-    width: 100%;
-    height: 35px;
-    padding: 6px 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+/* 입력 필드 스타일 */
+input, select {
+    padding: 12px 18px;
+    border: 1px solid rgba(121,85,72,0.2);
+    border-radius: 8px;
     font-size: 1.1em;
+    transition: all 0.3s ease;
+    background: rgba(255,255,255,0.9);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
 }
 
-.button-group {
-    flex: 1;
+input:focus, select:focus {
+    border-color: #795548;
+    box-shadow: 0 0 0 3px rgba(121,85,72,0.1);
+    outline: none;
 }
 
-.button-group button {
-    width: 100%;
-    height: 35px;
+/* 버튼 스타일 */
+.add-btn, .sort-btn {
+    padding: 8px 16px;
     background-color: #4CAF50;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 1em;
+    font-size: 14px;
 }
 
-.button-group button:hover {
+.add-btn:hover, .sort-btn:hover {
     background-color: #45a049;
 }
 
-/* 학습 진도 관리 스타일 수정 */
-.progress-table {
-    margin-top: 30px;
+/* 책 목록 스타일 */
+.book-list {
+    display: grid;
+    gap: 10px;
 }
 
-.study-header {
-    display: flex;
-    margin-bottom: 10px;
-    font-weight: bold;
+.book-item {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr auto;
+    align-items: center;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
-.header-cell {
-    flex: 1;
-    padding: 8px;
+.book-item:hover {
+    background: #f0f0f0;
 }
 
-.header-cell:first-child {
-    flex: 2;
-}
-
-.study-container {
+/* 학습 목차 입력 스타일 */
+.chapter-input-container {
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
     margin-bottom: 20px;
 }
 
-.study-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 0 15px;
+.input-row {
+    margin-bottom: 15px;
 }
 
-.chapter-input {
-    flex: 2;
-    height: 35px;
-    padding: 6px 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1.1em;
+.input-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* 첫 번째 줄 스타일 */
+.title-input {
+    flex: 1;
+    min-width: 300px;
+}
+
+.page-label {
+    margin-left: 20px;
+}
+
+.page-input {
+    width: 100px;
+}
+
+/* 두 번째 줄 스타일 */
+.dates-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
 }
 
 .date-group {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 10px;
 }
 
-.date-input {
-    width: 130px;
-    height: 35px;
-    padding: 6px 8px;
-    padding-right: 30px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1.1em;
-    position: relative;
-}
-
-.button-container {
+.date-inputs {
     display: flex;
-    justify-content: center;
-    margin-top: 20px;
+    align-items: center;
+    gap: 10px;
+    height: 35px;
 }
 
-#addRow {
-    width: auto;
-    padding: 8px 20px;
-    margin: 10px 15px;
-}
-
-/* 발행년도 입력 필드의 화살표 제거 */
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-/* 입력 필드 크기 조정 */
-#bookTitle {
-    width: 100%;
-}
-
-#publisher {
-    width: 200px;
-}
-
-#publishYear {
+.date-inputs input {
     width: 100px;
+    padding: 5px;
 }
 
-/* 버튼 스타일 유지 */
-button {
+.date-inputs span {
+    color: #666;
+    display: flex;
+    align-items: center;
+    height: 35px;
+}
+
+/* 버튼 스타일 */
+.add-btn {
+    padding: 8px 20px;
     background-color: #4CAF50;
     color: white;
-    padding: 10px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-family: 'NanumHimNae', sans-serif;
+    height: 35px;
+    margin-top: 0;
+    white-space: nowrap;
 }
 
-/* 날짜 구분자 (~) 스타일 */
-.date-separator {
-    margin: 0 2px;
+.add-btn:hover {
+    background-color: #45a049;
 }
 
 /* 입력 필드 공통 스타일 */
-input {
-    width: 100%;
-    height: 40px;
-    padding: 8px 12px;
+input[type="text"] {
+    padding: 8px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    font-size: 1.2em;
+    font-size: 14px;
 }
 
-/* 달력 아이콘 위치 조정 */
-input[type="date"]::-webkit-calendar-picker-indicator {
-    position: absolute;
-    right: 8px;
-    top: 50%;
-    transform: translateY(-50%);
+/* 라벨 스타일 */
+label {
+    white-space: nowrap;
+    color: #333;
+}
+
+/* 목차 테이블 스타일 */
+.chapter-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.chapter-table th,
+.chapter-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.chapter-table th {
+    background: #f8f9fa;
+    font-weight: normal;
+}
+
+/* 상태 버튼 스타일 */
+.status-btn {
+    display: inline-block;
+    min-width: 60px;
+    padding: 4px 8px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    text-align: center;
+    font-size: 14px;
+}
+
+.status-btn.planned {
+    background-color: #ffc107;
+}
+
+.status-btn.in-progress {
+    background-color: #17a2b8;
+}
+
+.status-btn.completed {
+    background-color: #28a745;
+}
+
+/* 관리 버튼 스타일 */
+.manage-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.edit-btn, .delete-btn {
+    padding: 4px 8px;
+    border: none;
+    border-radius: 4px;
+    color: white;
     cursor: pointer;
+}
+
+.edit-btn {
+    background-color: #4CAF50;
+}
+
+.delete-btn {
+    background-color: #f44336;
+}
+
+/* 빈 메시지 스타일 */
+.empty-message {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+}
+
+/* date 입력 필드 스타일 수정 */
+input[type="date"] {
+    padding: 6px 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 130px;
+    height: 35px;
+    box-sizing: border-box;
+}
+
+/* 기본 달력력력 아이콘 유지 */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 1;
+    cursor: pointer;
+}
+
+/* date 입력 필드 내부 텍스트 표시 */
+input[type="date"]::-webkit-datetime-edit {
+    color: #000;
+}
+
+/* 플레이스홀더 스타일 */
+input[type="date"]:not(:valid):not(:focus) {
+    color: #999;
+}
+
+/* date-inputs 컨테이너 스타일 */
+.date-inputs {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.date-inputs span {
+    color: #666;
+}
+
+/* 입력 필드에 포커스 시 스타일 */
+input[type="date"]:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.1);
+}
+
+/* 라벨 스타일 */
+.date-group label {
+    white-space: nowrap;
+    min-width: 100px;
+}
+
+/* 페페이지 제목 스타일 */
+.page-header {
+    text-align: center;
+    margin: 40px 0;
+    position: relative;
+    padding: 20px 0;
+}
+
+.page-header h1 {
+    font-size: 3.5em;
+    color: #333;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    position: relative;
+    display: inline-block;
+}
+
+.page-header h1::before {
+    content: '';
+    position: absolute;
+    left: -150px;
+    top: 60%;
+    transform: translateY(-50%);
+    width: 100px;
+    height: 120px;
+    background-image: url('/Users/user/Desktop/cursor_test/Project/BMwepapp/images/book.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    filter: drop-shadow(3px 3px 2px rgba(0,0,0,0.2));
+}
+
+.header-decoration {
+    width: 150px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #3498db, transparent);
+    margin: 0 auto;
+    position: relative;
+}
+
+.header-decoration::before,
+.header-decoration::after {
+    content: '';
+    position: absolute;
+    width: 250px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #3498db40, transparent);
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.header-decoration::before { top: -5px; }
+.header-decoration::after { bottom: -5px; }
+
+/* 폰트 정의 */
+@font-face {
+    font-family: 'NanumHimNae';
+    src: url('./fonts/NanumHimNae.ttf') format('truetype');
+}
+
+/* 전체 문서에 폰트 적용 */
+* {
+    font-family: 'NanumHimNae', sans-serif !important;
+}
+
+/* 버튼 스타일 개선 */
+button {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* 테이블 스타일 개선 */
+table {
+    border-collapse: separate;
+    border-spacing: 0 8px;
+    font-size: 1.1em;
+}
+
+tr {
+    transition: all 0.3s ease;
+}
+
+tr:hover {
+    background-color: rgba(121,85,72,0.05);
+}
+
+td {
+    padding: 12px 15px;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+td:first-child {
+    border-left: 1px solid #e0e0e0;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+td:last-child {
+    border-right: 1px solid #e0e0e0;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
 }
